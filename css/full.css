@@ -1,0 +1,8 @@
+.full {
+	background: url('http://miriadna.com/desctopwalls/images/max/Egyptian-landscape.jpg');
+	background-repeat: repeat;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}

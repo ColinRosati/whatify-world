@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html  class="full" lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="wy.png">
+   
+
+    <title>WHATIFY</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/navbar-top.css" rel="stylesheet">
+    <link href="css/full.css" rel="stylesheet">
+    <link href="css/body.css" rel="stylesheet">
+
+    
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse mb-4">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">WHATIFY</a>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+        <ul class="navbar-nav ">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">WHERE
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a class="link" onclick="clicked(this);" href="#">domestic</a></li>
+              <li><a class="link" onclick="clicked(this);" href="#">traumatic</a></li>
+              <li><a class="link" onclick="clicked(this);" href="#">romantic</a></li>
+              <li><a class="link" onclick="clicked(this);" href="#">Atlas</a></li>
+              <li><a class="link" onclick="clicked(this);" href="#">vacation</a></li>
+              <li><a class="link" onclick="clicked(this);" href="#">Fomo</a></li>
+              <li><a class="link" onclick="clicked(this);" href="#">Drowing</a></li>
+              <li><a class="link" onclick="clicked(this);" href="#">Sickness</a></li>
+              <li><a class="link" onclick="clicked(this);" href="#">Hospital</a></li>
+              <li><a class="link" onclick="clicked(this);" href="#">Height</a></li>
+            </ul>
+          </div>
+        
+
+          <li class="nav-item">
+            <div id="login" onclick="javascript:login();"><a class="nav-link" href="#">Login</div></a>
+          </li>
+          <li class="nav-item">
+            <div id="logout" onclick="javascript:logout();"><a class="nav-link" href="#">Logout</a></div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Testimonials</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div id="wrapper">
+
+    <div id="profile">
+        <img id="profilepic" src="">
+    </div>
+    
+</div>
+
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- // <script src="js/ie10-viewport-bug-workaround.js"></script> -->
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+
+
+
+
+    <script type="text/javascript">
+
+     window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '127818601067529',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+
+
+        function login() {
+            FB.login(function(response) {
+
+            // handle the response
+            console.log("Response goes here!");
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function(response) {
+                console.log('Successful login for: ' + response.name);
+                console.log('Successful login for: ' + response.id);
+                console.log('Successful login for: ' + response.email);
+                FB.api('/me/picture?type=normal', function (response) {
+                    document.getElementById("profilepic").setAttribute("src", response.data.url);
+                    animateIMG();
+                });
+               
+                    });
+
+            }, {scope: 'publish_actions,publish_actions,user_photos'}); 
+
+        
+
+        }
+
+
+        function logout() {
+          FB.logout(function () { document.location.reload(); });
+        }
+        
+
+        
+
+
+
+
+// $(document).ready(function(){
+//     animateIMG();
+    
+// });
+ 
+
+function makeNewPosition(){
+    
+    // Get viewport dimensions (remove the dimension of the div)
+    var h = $(window).height() - 50;
+    var w = $(window).width() - 50;
+    
+    var nh = Math.floor(Math.random() * h);
+    var nw = Math.floor(Math.random() * w);
+    
+    return [nh,nw];    
+    
+}
+
+function animateIMG(){
+    var newq = makeNewPosition();
+    var oldq = $('img').offset();
+    var speed = calcSpeed([oldq.top, oldq.left], newq);
+    
+    $('#profilepic').animate({ top: newq[0], left: newq[1] }, speed, function(){
+      animateIMG();        
+    });
+    
+};
+
+function calcSpeed(prev, next) {
+    
+    var x = Math.abs(prev[1] - next[1]);
+    var y = Math.abs(prev[0] - next[0]);
+    var greatest = x > y ? x : y;
+    
+    var speedModifier = 0.04;// control the speed here 
+
+    var speed = Math.ceil(greatest/speedModifier);
+    return speed;
+
+}
+
+
+var keyword = '' ;
+var intervalVar = '' ;
+
+document
+function getFliker(keyword) {
+    $.ajax({
+            url: "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+            tags: keyword,
+            tagmode: "any",
+            format: "json"
+            }, 
+             function(data){
+              imageRepeat(data)
+             })
+          };
+
+    // $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=callback?",
+    //     {
+    //         tags: keyword,
+    //         tagmode: "any",
+    //         format: "json"
+    //     },
+       
+ 
+ 
+function clicked(obj,abc) {  
+   getFliker(obj.text);
+}
+ 
+
+   
+
+
+function imageRepeat(data) {
+     clearInterval(intervalVar);
+     var rnd = Math.floor(Math.random() * data.items.length);
+                    var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
+                    jQuery.getJSON('#wrapper').css('background-image', "url('" + image_src + "')");
+     intervalVar = setInterval( function(){
+                    var rnd = Math.floor(Math.random() * data.items.length);
+                    var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
+                    $('#wrapper').css('background-image', "url('" + image_src + "')");
+                }, 5000);
+}
+
+// var invervalVar = setInterval(5000);
+
+
+
+
+
+//2. add interface.
+//     a. speed of image cycle
+//     b. type of image
+    </script>
+
+  </body>
+</html>

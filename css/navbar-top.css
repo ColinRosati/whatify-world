@@ -1,0 +1,38 @@
+/* Show it's not fixed to the top */
+body {
+  background:url('');
+  color:white;
+  text-shadow: 1px 1px 2px #ffb3e6;
+}
+
+
+
+.navbar {
+	height:80px;
+	border:2px solid white;
+}
+
+
+.nav-item {
+	margin: 10px;	
+}
+
+.navbar-brand{
+	margin: 10px;
+}
+
+@media only screen and (max-width : 990px) {
+       .navbar-collapse  {
+        background: rgba(0,0,0,0.5);
+        margin-top: 10px;
+        width: 120px; 
+        text-align: center;
+        border:1px solid white;
+    }
+
+    .navbar-collapse ul li a {
+       height: 30px;
+       padding-bottom: 5px;
+
+    }
+}
